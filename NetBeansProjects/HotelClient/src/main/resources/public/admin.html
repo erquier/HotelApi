@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotels</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src= "app.js"></script>
+
+</head>
+<body>
+  <div>
+<aside>Logo Here</aside>
+
+  </div>
+
+  <nav>
+   <a href="/index.html/">Home</a> |
+   <a href="/reserva.html/">Reserve</a> |
+   <a href="/login.html/">Login</a> |
+   <a href="/admin.html/">Administrativo</a>
+ </nav>
+<div id="form">
+
+  <p>Registre su hotel</p>
+  <form method='post'>
+      Nombre:<br>
+      <input type='string' name='nombre'><br>
+
+      Telefono:<br>
+      <input type="string" name="telefono" >
+      <br><br>
+
+      Direccion:<br>
+      <input type="string" name="direccion">
+      <br><br>
+
+      <input type='button' onclick="crearHotel()" value="Registrar">
+  </form>
+</div>
+
+
+ <footer>
+   <p>(c) 2018 hotels all rights reserved</p>
+ </footer>
+</body>
+</html>

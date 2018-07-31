@@ -27,6 +27,23 @@ import spark.Spark;
 public class Main {
 
     public static void main(String[] args) {
-        get("/hello", (req, res) -> "Hello World");
+        
+        staticFiles.location("/public");
+        port(1234);
+
+    
+    get("/cliente", (req, res) ->{
+    res.redirect("createclient.html");
+    
+    return null;
+    });
+    
+    
+    
+    
+    
+    
+    
+    
     }
 }
