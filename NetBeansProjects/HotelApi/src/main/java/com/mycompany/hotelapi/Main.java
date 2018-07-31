@@ -25,7 +25,7 @@ public class Main {
     
     public static void main(String[] args){
     
-        staticFiles.location("/public");
+        
         
         Spark.exception(Exception.class, (exception, request, response) -> {
             exception.printStackTrace();
@@ -57,6 +57,38 @@ public class Main {
             return null;
         });
         
+        
+        //agregar cliente
+        post("/crear", (req, res) -> {
+        
+        String nombre = req.queryParams("nombre");
+        String email = req.queryParams("email");
+        String password = req.queryParams("password");
+        String telefono = req.queryParams("telefono");
+        String direccion = req.queryParams("direccion");
+        
+        int estado = Integer.parseInt(req.queryParams("estado"));
+        
+            String insertID = "";
+            Session session = factory.openSession();
+            Transaction tx = null;
+
+            try {
+                tx = session.beginTransaction();
+                Cliente cliente = new Cliente(nombre,email, password, telefono, direccion, estado);
+                insertID = session.save(cliente).toString();
+                tx.commit();
+
+            } catch (HibernateException e) {
+                if (tx != null) {
+                    tx.rollback();
+                }
+                e.printStackTrace();
+            } finally {
+                session.close();
+            }
+            return new Gson().toJson("Agregado");
+        });
         
     
     }
